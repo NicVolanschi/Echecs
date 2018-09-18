@@ -2,14 +2,17 @@ SRC_CXX=Piece.cxx
 
 OBJ=${SRC_CXX:.cxx=.o}
 
+CFLAGS=-MMD -g
+
+%.o: %.cxx
+	g++ -c $(CFALGS) $<
+
 all: testPiece
 
 testPiece: $(OBJ) testPiece.o
 	g++ $(OBJ) testPiece.o -o testPiece
 
-%.o: %.cxx
-	g++ -c $<
-
 clean:
 	@rm -f $(OBJ) testPiece.o testPiece *~
 
+-include *.d
