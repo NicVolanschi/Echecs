@@ -5,7 +5,7 @@ OBJ=${SRC_CXX:.cxx=.o}
 CFLAGS=-MMD -g
 
 %.o: %.cxx
-	g++ -c $(CFALGS) $<
+	g++ -c $(CFLAGS) $<
 
 all: testPiece
 
