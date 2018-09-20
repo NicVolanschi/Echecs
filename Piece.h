@@ -8,7 +8,7 @@
 #define Piece_h
 
 /**
- * Declaration d'une classe modélisant une piece de jeu d'echec.
+ * Declaration d'une classe modï¿½lisant une piece de jeu d'echec.
  */
 class Piece 
 {
@@ -19,11 +19,16 @@ private:
   
 public:
   Piece();
+  Piece(int x, int y, bool white);
+  ~Piece();
   void init( int x, int y, bool white );
   void move( int x, int y );
   int x();
   int y();
   bool isWhite();
+  bool isBlack();
+  void affiche();
+  Piece plusForte(Piece & p);
 }; 
 
 #endif // !defined Piece_h
