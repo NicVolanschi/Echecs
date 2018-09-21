@@ -1,4 +1,4 @@
-SRC_CXX=Piece.cxx Joueur.cxx
+SRC_CXX=Piece.cxx Joueur.cxx Echiquier.cxx
 
 OBJ=${SRC_CXX:.cxx=.o}
 

@@ -7,6 +7,9 @@
 #if !defined Piece_h
 #define Piece_h
 
+#include "Echiquier.h"
+//class Echiquier;
+
 /**
  * Declaration d'une classe mod�lisant une piece de jeu d'echec.
  */
@@ -23,12 +26,13 @@ public:
   ~Piece();
   void init( int x, int y, bool white );
   void move( int x, int y );
-  int x();
-  int y();
-  bool isWhite();
-  bool isBlack();
-  void affiche();
-  Piece plusForte(Piece & p);
+  int x() const;
+  int y() const;
+  bool isWhite() const;
+  bool isBlack() const;
+  void affiche() const;
+  const Piece & plusForte(const Piece & p);
+  bool mouvementValide(Echiquier &e, int x, int y);
 }; 
 
 #endif // !defined Piece_h

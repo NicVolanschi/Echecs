@@ -9,6 +9,7 @@
 #include <assert.h>
 #include "Piece.h"
 #include "Joueur.h"
+#include "Echiquier.h"
 
 
 // Pour utiliser les flux de iostream sans mettre "std::" tout le temps.
@@ -65,5 +66,19 @@ int main( int argc, char** argv )
   //assert(memeEndroit(Piece(3,3,true), p1) == 1);
 
   p3.plusForte(p2).affiche();
-  //p3.plusForte(Piece(2,4, true)).affiche();
+  p3.plusForte(Piece(2,4, true)).affiche();
+
+  Echiquier e;
+  e.affiche();
+
+  // assert(e.placer(&p1) == true);x
+  // assert(e.placer(&p1) == false);
+  // assert(e.getPiece(3, 3) == &p1);
+  // Piece perr = Piece(10, 20, true);
+  // assert(e.placer(nullptr) == false);
+  // assert(e.placer(&perr) == false);
+
+  blanc.placer(e);
+  noir.placer(e);
+  e.affiche();
 }

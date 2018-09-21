@@ -8,6 +8,7 @@
 #define Joueur_h
 
 #include "Piece.h"
+#include "Echiquier.h"
 
 /**
  * Declaration d'une classe mod�lisant un joueur de jeu d'echec.
@@ -18,6 +19,7 @@ class Joueur
     Piece m_pieces[16];
  public:
     Joueur(bool white);
+    void placer(Echiquier & e);
     void affiche();
 };
 

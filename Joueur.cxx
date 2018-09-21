@@ -5,6 +5,7 @@
  */
 
 #include <iostream>
+#include <assert.h>
 // A besoin de la declaration de la classe
 #include "Joueur.h"
 
@@ -27,6 +28,15 @@ Joueur::Joueur(bool white)
         for (int i = 0; i < 8; i++) {
             m_pieces[i + 8] = Piece(i + 1, 7, false); 
         }
+    }
+}
+
+void
+Joueur::placer(Echiquier & e)
+{
+    for (int i = 0; i < 16; i++) {
+        assert(e.placer(&m_pieces[i]) == true);
+        assert(e.getPiece(m_pieces[i].x(), m_pieces[i].y()) == &m_pieces[i]);
     }
 }
 

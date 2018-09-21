@@ -43,41 +43,53 @@ Piece::move( int x, int y )
 }
 
 int
-Piece::x()
+Piece::x() const
 {
   return m_x;
 }
 
 int
-Piece::y()
+Piece::y() const
 {
   return m_y;
 }
 
 bool
-Piece::isWhite()
+Piece::isWhite() const
 {
   return m_white;
 }
 
 bool 
-Piece::isBlack() 
+Piece::isBlack() const
 {
   return !m_white;
 }
 
 void 
-Piece::affiche() 
+Piece::affiche() const
 {
   cout << "Piece: x=" << x() << " y=" << y() << " "
        << ( isWhite() ? "blanche" : "noire" ) << endl;
     
 }
 
-Piece 
-Piece::plusForte(Piece & p)
+const Piece &
+Piece::plusForte(const Piece & p)
 {
   if(p.x() > x() && p.y() > y()) 
     return p;
   else return *this;
+}
+
+//Piece* Echiquier::getPiece( int x, int y );
+
+bool Piece::mouvementValide(Echiquier &e, int x, int y)
+{
+  Piece *p = e.getPiece(x, y);
+  if (p == nullptr) { // case vide
+    return true;
+  } else { // case pleine
+    return p->isWhite() != isWhite(); // capture
+  }
 }

@@ -7,15 +7,18 @@
 #include <iostream>
 // A besoin de la declaration de la classe
 #include "Echiquier.h"
+#include "Piece.h"
 
 using namespace std;
 
 /**
- * Constructeur par défaut.
- * Initialise à vide l'echiquier.
+ * Constructeur par dï¿½faut.
+ * Initialise ï¿½ vide l'echiquier.
  */
 Echiquier::Echiquier()
 {
+	for (int i = 0; i < 64; i++)
+		m_cases[i] = nullptr;
 }
 
 
@@ -31,6 +34,7 @@ Echiquier::Echiquier()
 Piece* 
 Echiquier::getPiece( int x, int y )
 {
+	return m_cases[indexCase(x, y)];
 }
 
   
@@ -45,6 +49,12 @@ Echiquier::getPiece( int x, int y )
 bool 
 Echiquier::placer( Piece* p )
 {
+	if (p == nullptr || getPiece(p->x(), p->y()) != nullptr ||
+		!caseValide(p->x(), p->y())) {
+		return false;
+		}
+	m_cases[indexCase(p->x(), p->y())] = p;
+	return true;
 }
 
 
@@ -63,6 +73,14 @@ Echiquier::placer( Piece* p )
 bool 
 Echiquier::deplacer( Piece* p, int x, int y )
 {
+	if (p == nullptr || m_cases[indexCase(x, y)] != nullptr ||
+		!caseValide(x, y) || m_cases[indexCase(p->x(), p->y())] != p) {
+		return false;
+	}
+	m_cases[indexCase(p->x(), p->y())] = nullptr;
+	p->move(x, y);
+	m_cases[indexCase(x, y)] = p;
+	return true;
 }
 
 
@@ -78,6 +96,12 @@ Echiquier::deplacer( Piece* p, int x, int y )
 Piece* 
 Echiquier::enleverPiece( int x, int y )
 {
+
+	Piece *p = getPiece(x, y);
+	if (p == nullptr)
+		return nullptr;
+	m_cases[indexCase(x, y)] = nullptr;
+	return p;
 }
 
 
