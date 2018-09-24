@@ -39,8 +39,53 @@ public:
 class Pion : public Piece 
 {
 public:
-  Pion(int x, int y, bool white);
+  Pion(int x, int y, bool white) : Piece(x, y, white) {};
   //~Pion() {}
+  bool mouvementValide( Echiquier & e, int x, int y );
+  char name();
+};
+
+class Tour : public Piece 
+{
+public:
+  Tour(int x, int y, bool white) : Piece(x, y, white) {};
+  //~Tour() {}
+  bool mouvementValide( Echiquier & e, int x, int y );
+  char name();
+};
+
+class Cavalier : public Piece 
+{
+public:
+  Cavalier(int x, int y, bool white) : Piece(x, y, white) {};
+  //~Cavalier() {}
+  bool mouvementValide( Echiquier & e, int x, int y );
+  char name();
+};
+
+class Fou : public Piece 
+{
+public:
+  Fou(int x, int y, bool white) : Piece(x, y, white) {};
+  //~Fou() {}
+  bool mouvementValide( Echiquier & e, int x, int y );
+  char name();
+};
+
+class Reine : public Piece 
+{
+public:
+  Reine(int x, int y, bool white) : Piece(x, y, white) {};
+  //~Reine() {}
+  bool mouvementValide( Echiquier & e, int x, int y );
+  char name();
+};
+
+class Roi : public Piece 
+{
+public:
+  Roi(int x, int y, bool white) : Piece(x, y, white) {};
+  //~Roi() {}
   bool mouvementValide( Echiquier & e, int x, int y );
   char name();
 };

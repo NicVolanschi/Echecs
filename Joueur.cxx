@@ -21,16 +21,26 @@ Joueur::init(bool white)
 {
     m_white = white;
     if (white) {
-        for (int i = 0; i < 8; i++) {
-            m_pieces[i] = new Piece(i + 1, 1, true); 
-        }
+        m_pieces[0] = new Tour(1, 1, true);
+        m_pieces[1] = new Cavalier(2, 1, true);
+        m_pieces[2] = new Fou(3, 1, true);
+        m_pieces[3] = new Reine(4, 1, true);
+        m_pieces[4] = new Roi(5, 1, true);
+        m_pieces[5] = new Fou(6, 1, true);
+        m_pieces[6] = new Cavalier(7, 1, true);
+        m_pieces[7] = new Tour(8, 1, true);
         for (int i = 0; i < 8; i++) {
             m_pieces[i + 8] = new Pion(i + 1, 2, true); 
         }
     } else {
-        for (int i = 0; i < 8; i++) {
-            m_pieces[i] = new Piece(i + 1, 8, false); 
-        }
+        m_pieces[0] = new Tour(1, 8, false);
+        m_pieces[1] = new Cavalier(2, 8, false);
+        m_pieces[2] = new Fou(3, 8, false);
+        m_pieces[3] = new Reine(4, 8, false);
+        m_pieces[4] = new Roi(5, 8, false);
+        m_pieces[5] = new Fou(6, 8, false);
+        m_pieces[6] = new Cavalier(7, 8, false);
+        m_pieces[7] = new Tour(8, 8, false);
         for (int i = 0; i < 8; i++) {
             m_pieces[i + 8] = new Pion(i + 1, 7, false); 
         }

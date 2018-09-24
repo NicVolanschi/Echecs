@@ -56,6 +56,7 @@ int main( int argc, char** argv )
   //Piece tbl[4];
   //Joueur blanc(true);
   //Joueur noir(false);
+  //Joueur mj;
   JoueurBlanc blanc;
   JoueurNoir noir;
   //blanc.affiche();
@@ -86,4 +87,34 @@ int main( int argc, char** argv )
 
   Pion p(2,2, true);
   assert(p.name() == 'P');
+
+  Piece *tourB = e.getPiece(1, 1);
+  assert(tourB->mouvementValide(e, 1, 4) == false);
+  assert(tourB->mouvementValide(e, 1, 7) == false);
+  assert(tourB->mouvementValide(e, 1, 2) == false);
+  assert(tourB->mouvementValide(e, 1, 1) == false);
+
+  string line;
+  while(true) {
+    cout << "> ";
+    cin >> line;
+    if (line == "exit") break;
+    cout << "move=" << line << endl;
+    if (line.size() != 4 || 
+      line[0] < 'a' || line[0] > 'h' || line[2] < 'a' || line[2] > 'h' ||
+      line[1] < '1' || line[1] > '8' || line[3] < '1' || line[3] > '8') {
+      cout << "mouvement incompris" << endl;
+      continue;
+    }
+    int x1 = line[0] - 'a' + 1;
+    int y1 = line[1] - '0';
+    int x2 = line[2] - 'a' + 1;
+    int y2 = line[3] - '0';
+    Piece *p = e.getPiece(x1, y1);
+    if (p != nullptr) {
+      p->affiche();
+      cout << endl;
+    }
+    cout << "e.deplacer(" << x2 << "," << y2 << ")" << endl;
+  }
 }

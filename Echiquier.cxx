@@ -113,8 +113,8 @@ Echiquier::enleverPiece( int x, int y )
 void
 Echiquier::affiche()
 {
-  cout << endl << "  12345678" << endl;
-  for ( int y = 1; y <= 8; ++y )
+  cout << endl << "  ABCDEFGH" << endl;
+  for ( int y = 8; y >= 1; --y )
     {
       cout << y << " ";
       for ( int x = 1; x <= 8; ++x )
@@ -129,7 +129,7 @@ Echiquier::affiche()
 	}
       cout << " " << y << endl;
     }
-  cout << "  12345678" << endl;
+  cout << "  ABCDEFGH" << endl;
 }
 
   
