@@ -16,12 +16,28 @@
 class Joueur 
 {
     bool m_white;
-    Piece m_pieces[16];
+    Piece *m_pieces[16];
+protected:
+    Joueur();
+    ~Joueur();
+    void init(bool white);
  public:
-    Joueur(bool white);
     void placer(Echiquier & e);
     void affiche();
 };
 
+class JoueurBlanc : public Joueur
+{
+public: 
+    JoueurBlanc();
+
+};
+
+class JoueurNoir : public Joueur
+{
+public: 
+    JoueurNoir();
+    
+};
 
 #endif // !defined Joueur_h

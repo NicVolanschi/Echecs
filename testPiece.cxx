@@ -54,8 +54,10 @@ int main( int argc, char** argv )
   assert(p2.isBlack() == true);
 
   //Piece tbl[4];
-  Joueur blanc(true);
-  Joueur noir(false);
+  //Joueur blanc(true);
+  //Joueur noir(false);
+  JoueurBlanc blanc;
+  JoueurNoir noir;
   //blanc.affiche();
   noir.affiche();
 
@@ -81,4 +83,7 @@ int main( int argc, char** argv )
   blanc.placer(e);
   noir.placer(e);
   e.affiche();
+
+  Pion p(2,2, true);
+  assert(p.name() == 'P');
 }

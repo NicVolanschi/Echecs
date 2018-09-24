@@ -124,7 +124,7 @@ Echiquier::affiche()
 	  if ( p == 0 ) 
 	    c = ( ( x + y ) % 2 ) == 0 ? '#' : '.';
 	  else
-	    c = p->isWhite() ? 'B' : 'N';
+	    c = p->name();
 	  cout << c;
 	}
       cout << " " << y << endl;

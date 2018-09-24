@@ -32,7 +32,17 @@ public:
   bool isBlack() const;
   void affiche() const;
   const Piece & plusForte(const Piece & p);
-  bool mouvementValide(Echiquier &e, int x, int y);
+  virtual bool mouvementValide(Echiquier &e, int x, int y);
+  virtual char name();
 }; 
+
+class Pion : public Piece 
+{
+public:
+  Pion(int x, int y, bool white);
+  //~Pion() {}
+  bool mouvementValide( Echiquier & e, int x, int y );
+  char name();
+};
 
 #endif // !defined Piece_h

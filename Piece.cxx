@@ -93,3 +93,22 @@ bool Piece::mouvementValide(Echiquier &e, int x, int y)
     return p->isWhite() != isWhite(); // capture
   }
 }
+
+char Piece::name() 
+{
+  return isWhite()? 'B' : 'N';
+}
+
+// Code des sous-classes de Piece
+
+Pion::Pion(int x, int y, bool white) : Piece(x, y, white) {}
+
+bool Pion::mouvementValide( Echiquier & e, int x, int y )
+{
+  return Piece::mouvementValide(e, x, y);
+}
+
+char Pion::name()
+{
+  return isWhite()? 'P': 'p';
+}
