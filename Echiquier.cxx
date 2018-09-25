@@ -73,8 +73,8 @@ Echiquier::placer( Piece* p )
 bool 
 Echiquier::deplacer( Piece* p, int x, int y )
 {
-	if (p == nullptr || m_cases[indexCase(x, y)] != nullptr ||
-		!caseValide(x, y) || m_cases[indexCase(p->x(), p->y())] != p) {
+	if (p == nullptr || !caseValide(x, y) || m_cases[indexCase(x, y)] != nullptr ||
+		m_cases[indexCase(p->x(), p->y())] != p) {
 		return false;
 	}
 	m_cases[indexCase(p->x(), p->y())] = nullptr;

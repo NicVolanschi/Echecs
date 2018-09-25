@@ -7,6 +7,7 @@
 #if !defined Joueur_h
 #define Joueur_h
 
+#include <vector>
 #include "Piece.h"
 #include "Echiquier.h"
 
@@ -16,7 +17,7 @@
 class Joueur 
 {
     bool m_white;
-    Piece *m_pieces[16];
+    std::vector<Piece *> m_pieces;
 protected:
     Joueur();
     ~Joueur();
@@ -25,6 +26,7 @@ protected:
     void placer(Echiquier & e);
     void affiche();
     virtual int foo() = 0;
+    bool supprimerPiece(Piece *p);
 };
 
 class JoueurBlanc : public Joueur

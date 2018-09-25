@@ -2,7 +2,7 @@ SRC_CXX=Piece.cxx Joueur.cxx Echiquier.cxx
 
 OBJ=${SRC_CXX:.cxx=.o}
 
-CFLAGS=-MMD -g
+CFLAGS=-MMD -g -std=c++11
 
 %.o: %.cxx
 	g++ -c $(CFLAGS) $<

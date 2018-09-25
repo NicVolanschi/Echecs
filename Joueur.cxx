@@ -19,6 +19,7 @@ Joueur::Joueur()
 void
 Joueur::init(bool white)
 {
+    m_pieces.resize(16);
     m_white = white;
     if (white) {
         m_pieces[0] = new Tour(1, 1, true);
@@ -49,7 +50,7 @@ Joueur::init(bool white)
 
 Joueur::~Joueur()
 {
-    for (int i = 0; i < 16; i++) {
+    for (int i = 0; i < m_pieces.size(); i++) {
         if (m_pieces[i] != nullptr)
             delete m_pieces[i];
     }
@@ -73,10 +74,28 @@ Joueur::placer(Echiquier & e)
     }
 }
 
+bool 
+Joueur::supprimerPiece(Piece *p) 
+{
+    for (auto i = m_pieces.begin(); i != m_pieces.end(); i++) {
+        //(*i)->affiche();
+        if (*i == p) {
+            //*i = nullptr;
+            delete *i;
+            m_pieces.erase(i);
+            cout << m_pieces.size() << " pieces restantes" << endl;
+            return true;
+        }
+    }
+    return false;
+}
+
+
 void 
 Joueur::affiche()
 {
     cout << "Joueur " << (m_white? "blanc": "noir") << endl;
+    cout << m_pieces.size() << " pieces:" << endl;
     for (int i = 0; i < 16; i++) {
         m_pieces[i]->affiche();
     }

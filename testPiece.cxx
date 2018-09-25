@@ -115,6 +115,27 @@ int main( int argc, char** argv )
       p->affiche();
       cout << endl;
     }
+    Piece *p2 = e.getPiece(x2, y2);
     cout << "e.deplacer(" << x2 << "," << y2 << ")" << endl;
+    if (p2 == nullptr) {
+      assert(e.deplacer(p, x2, y2) == true);
+    } else {
+      if (p2->isWhite() == p->isWhite()) {
+        cout << "Case destination occuppee" << endl;
+        continue;
+      } else {
+        cout << "capture" << endl;
+        Piece *p3 = e.enleverPiece(x2, y2);
+        assert(p2 == p3);
+        // Todo: supprimer p2
+        if (p2->isWhite()) {
+          assert(blanc.supprimerPiece(p2) == true);
+        } else {
+          assert(noir.supprimerPiece(p2) == true);
+        }
+        assert(e.deplacer(p, x2, y2) == true);
+      }
+    }
+    e.affiche();
   }
 }
