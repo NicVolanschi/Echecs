@@ -5,7 +5,6 @@
  */
 
 #include <iostream>
-#include <assert.h>
 // A besoin de la declaration de la classe
 #include "Joueur.h"
 
@@ -59,18 +58,8 @@ Joueur::~Joueur()
 void
 Joueur::placer(Echiquier & e)
 {
-    for (int i = 0; i < 16; i++) {
-        assert(e.placer(m_pieces[i]) == true);
-        assert(e.getPiece(m_pieces[i]->x(), m_pieces[i]->y()) == m_pieces[i]);
-        if (i >= 8 && i < 16) {
-            if (m_white) {
-                assert(m_pieces[i]->name() == 'P');
-                assert(e.getPiece(m_pieces[i]->x(), m_pieces[i]->y())->name() == 'P');
-            } else {
-                assert(m_pieces[i]->name() == 'p');
-                assert(e.getPiece(m_pieces[i]->x(), m_pieces[i]->y())->name() == 'p');
-            }
-        }
+    for (int i = 0; i < m_pieces.size(); i++) {
+        e.placer(m_pieces[i]);
     }
 }
 
@@ -96,8 +85,9 @@ Joueur::affiche()
 {
     cout << "Joueur " << (m_white? "blanc": "noir") << endl;
     cout << m_pieces.size() << " pieces:" << endl;
-    for (int i = 0; i < 16; i++) {
-        m_pieces[i]->affiche();
+    //for (int i = 0; i < m_pieces.size(); i++) {
+    for (Piece *& p : m_pieces) {
+        p->affiche();
     }
     cout << "end Joueur" << endl;
 }
